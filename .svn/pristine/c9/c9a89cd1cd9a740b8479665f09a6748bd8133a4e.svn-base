@@ -1,0 +1,6 @@
+.genderF{
+  color:red;
+}
+.genderM{
+  color:blue
+}

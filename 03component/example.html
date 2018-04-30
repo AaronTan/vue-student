@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>组件</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <h1>组件</h1>
+    <div class="comp">
+      <mycomp1></mycomp1>
+    </div>
+    <script>
+    //注册组件
+    Vue.component("mycomp1",{
+      template:`
+        <div class="root">
+          Car:
+          <input type="text" v-model="car" v-on:keyup.enter="addCar()"/><br/>
+          <ul>
+            <li v-for="c in carList">{{c}}</li>
+          </ul>
+        </div>
+
+      `,
+      data:function(){
+        return {
+          car:"",
+          carList:[]
+        }
+      },
+      methods:{
+        addCar:function(){
+          console.log("component->methods->addCar");
+          this.carList.push(this.car);
+          this.car = "";
+        }
+      }
+    });
+    //创建根实例
+    var comp1 = new Vue({
+      el:".comp"
+    });
+    </script>
+  </body>
+</html>

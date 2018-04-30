@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>watch</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>watch</h1>
+      three:<input type="text" v-model="three" /><br/>
+      <hr />
+      watch->shang:{{shang}}<br/>
+    </div>
+    <script>
+
+    var obj = new Vue({
+      el:"#app",
+      data:{
+        three:0,
+        shang:0
+      },
+      watch:{
+        three(valAfter,valBefore){
+          console.log("watch->three");
+          this.shang = valAfter / 3;
+        }
+      }
+    });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>methods and computed</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>methods,computed</h1>
+      <input type="text" v-model="name" /><br/>
+      one:<input type="text" v-model="one" />
+      two:<input type="text" v-model="two" /><br/>
+      book:<input type="text" v-model="book" v-on:keyup.enter="addBook()" />
+      <hr />
+      {{name}}<br/>
+      methods->add():{{add()}}<br/>
+      methods->minus:{{minus()}}<br/>
+      <hr />
+      computed->multify:{{multify}}<br/>
+      <hr />
+      <ul>
+        <li v-for="b in books">{{b}}</li>
+      </ul>
+    </div>
+    <script>
+
+    var obj = new Vue({
+      el:"#app",
+      data:{
+        name:"tanlin",
+        one:0,
+        two:0,
+        book:"",
+        books:[]
+      },
+      methods:{
+        add:function(){
+          console.log("method->add");
+          return this.one*1 + this.two*1;
+        },
+        minus:function(){
+          console.log("method->minus");
+          return this.one - this.two;
+        },
+        addBook:function(){
+          this.books.push(this.book);
+          this.book="";
+        }
+      },
+      computed:{
+        multify:function(){
+          console.log("computed->multify");
+          return this.one * this.two;
+        }
+      }
+    });
+    </script>
+  </body>
+</html>
